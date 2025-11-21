@@ -18,4 +18,17 @@ public class CriaturaDomesticada extends Criatura {
 	public void volverInestable() {
 
 	}
+	
+	//CAMBIOS A VERIFICAR
+		//No estoy segura si poner algo en pacificar ya que siempre va a estar tranquila
+		@Override
+		public void pacificar() {
+			
+		}
+
+		//Reducción de energía estable
+		@Override
+		public void reducirEnergia(int cantidad) {
+			this.nivelDeEnergia -= 1;
+		}
 }

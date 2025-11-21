@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb2.criaturas;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*; 
 
 import org.junit.Test;
 
@@ -59,6 +59,32 @@ public class CriaturasTest {
 	@Test
 	public void queTodaCriaturaEmpiezaTranquila() {
 		Criatura c = new CriaturaSalvaje("Lobo", 50, Afinidad.FUEGO);
+		assertEquals(Emocional.TRANQUILA, c.getEstado());
+	}
+	
+////CAMBIOS A VERIFICAR
+	@Test
+	public void queUnaCriaturaSalvajeSeVuelvaInestableConEnergiaMayorA100() {
+		Criatura c = new CriaturaSalvaje("Lobo", 100, Afinidad.FUEGO);
+		c.entrenar();
+		assertEquals(Emocional.INESTABLE, c.getEstado());
+	}
+	
+	@Test
+	public void queUnaCriaturaAncestralSeVuelvaInestableConEnergiaMayorA150() {
+		Criatura c = new CriaturaAncestral("Samy", 150, Afinidad.FUEGO);
+		c.entrenar();
+		assertEquals(Emocional.INESTABLE, c.getEstado());
+	}
+	
+	@Test
+	public void queUnaCriaturaDomesticadaNoPuedaVolverseInestable() {
+		Criatura c = new CriaturaDomesticada("Samy", 150, Afinidad.FUEGO);
+		c.entrenar();	//Hice varios para demostrar que da igual cuánto entrene nunca se vuelve inestable.
+		c.entrenar();
+		c.entrenar();
+		c.entrenar();
+		c.entrenar();
 		assertEquals(Emocional.TRANQUILA, c.getEstado());
 	}
 }

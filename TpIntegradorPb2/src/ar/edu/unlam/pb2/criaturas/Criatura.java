@@ -40,10 +40,16 @@ public abstract class Criatura {
 			this.nivelDeEnergia = 200;
 		}
 	}
+	
+	//CAMBIOS A VERIFICAR
+		public abstract void entrenar();
+		
+		public abstract void pacificar();
 
-	public abstract void entrenar();
+		
+		public void volverInestable() {
+			this.estado = Emocional.INESTABLE;
+	 }
 
-	public void pacificar() {
-		this.estado = Emocional.TRANQUILA;
-	}
+		public abstract void reducirEnergia(int cantidad);
 }

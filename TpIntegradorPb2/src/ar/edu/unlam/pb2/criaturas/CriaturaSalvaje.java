@@ -19,6 +19,26 @@ public class CriaturaSalvaje extends Criatura {
 			throw new EnergiaDesbordadaException("La criatura salvaje superó el límite de energía");
 		}
 
+		// Nuevo if
+		if (nuevaEnergia > 100) {
+			this.volverInestable();
+		}
+
 		this.nivelDeEnergia = nuevaEnergia;
+	}
+	
+////CAMBIOS A VERIFICAR
+	
+	@Override
+	public void reducirEnergia(int cantidad) {
+		this.nivelDeEnergia -= cantidad;
+	}
+	
+	@Override
+	public void pacificar() {
+		if (this.getEstado().equals(Emocional.INESTABLE)) {
+		this.reducirEnergia(50);
+		this.estado = Emocional.TRANQUILA;
+		}
 	}
 }
