@@ -1,0 +1,14 @@
+package ar.edu.unlam.pb2.criaturas;
+
+public class EnergiaDesbordadaException extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
+
+	public EnergiaDesbordadaException() {
+		super();
+	}
+
+	public EnergiaDesbordadaException(String mensaje) {
+		super(mensaje);
+	}
+}
