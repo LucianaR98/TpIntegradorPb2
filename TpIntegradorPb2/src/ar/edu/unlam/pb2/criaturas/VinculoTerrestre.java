@@ -2,6 +2,8 @@ package ar.edu.unlam.pb2.criaturas;
 
 public class VinculoTerrestre extends TransformacionesDecorador {
 
+	private final Integer LIMITE_MIN_ENERGIA = 50;
+
 	public VinculoTerrestre(Criatura criatura) {
 		super(criatura);
 	}
@@ -22,8 +24,8 @@ public class VinculoTerrestre extends TransformacionesDecorador {
 
 		Integer energia = this.criatura.getNivelDeEnergia();
 
-		if (energia < 50) {
-			this.criatura.setNivelDeEnergia(50);
+		if (energia < LIMITE_MIN_ENERGIA) {
+			this.criatura.setNivelDeEnergia(LIMITE_MIN_ENERGIA);
 		}
 
 		if (this.criatura instanceof CriaturaAncestral &&

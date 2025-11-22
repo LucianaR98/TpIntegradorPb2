@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class CriaturaSalvaje extends Criatura {
 
+	private final int ENERGIA_MAXIMA = 200;
 	private Random random = new Random();
 
 	public CriaturaSalvaje(String nombre, Integer nivelDeEnergia, Afinidad afinidad) {
@@ -15,30 +16,27 @@ public class CriaturaSalvaje extends Criatura {
 		int aumento = 10 + random.nextInt(31);
 		int nuevaEnergia = this.nivelDeEnergia + aumento;
 
-		if (nuevaEnergia > 200) {
+		if (nuevaEnergia > ENERGIA_MAXIMA) {
 			throw new EnergiaDesbordadaException("La criatura salvaje superó el límite de energía");
 		}
 
-		// Nuevo if
 		if (nuevaEnergia > 100) {
 			this.volverInestable();
 		}
 
 		this.setNivelDeEnergia(nuevaEnergia);
 	}
-	
-////CAMBIOS A VERIFICAR
-	
+
 	@Override
 	public void reducirEnergia(int cantidad) {
 		this.nivelDeEnergia -= cantidad;
 	}
-	
+
 	@Override
 	public void pacificar() {
 		if (this.getEstado().equals(Emocional.INESTABLE)) {
-		this.reducirEnergia(50);
-		this.estado = Emocional.TRANQUILA;
+			this.reducirEnergia(50);
+			this.estado = Emocional.TRANQUILA;
 		}
 	}
 }

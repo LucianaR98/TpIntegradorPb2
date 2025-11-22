@@ -1,7 +1,7 @@
 package ar.edu.unlam.pb2.criaturas;
 
 public class LlamaInterna extends TransformacionesDecorador {
-	private Integer energiaGanada = 30;
+	private final Integer ENERGIA_GANADA = 30;
 
 	public LlamaInterna(Criatura criatura) {
 		super(criatura);
@@ -13,7 +13,7 @@ public class LlamaInterna extends TransformacionesDecorador {
 		this.criatura.entrenar();
 
 		if (this.criatura.getAfinidad().equals(Afinidad.FUEGO)) {
-			Integer nuevaEnergia = this.criatura.getNivelDeEnergia() + energiaGanada;
+			Integer nuevaEnergia = this.criatura.getNivelDeEnergia() + ENERGIA_GANADA;
 			this.setNivelDeEnergia(nuevaEnergia);
 		} else {
 			this.volverInestable();

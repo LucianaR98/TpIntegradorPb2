@@ -38,11 +38,13 @@ public abstract class Criatura {
 	}
 
 	protected void ajustarEnergiaEntre0y200() {
-		if (this.nivelDeEnergia < 0) {
-			this.nivelDeEnergia = 0;
+		Integer energiaMin = 0;
+		if (this.nivelDeEnergia < energiaMin) {
+			this.nivelDeEnergia = energiaMin;
 		}
-		if (this.nivelDeEnergia > 200) {
-			this.nivelDeEnergia = 200;
+		Integer energiaMax = 200;
+		if (this.nivelDeEnergia > energiaMax) {
+			this.nivelDeEnergia = energiaMax;
 		}
 	}
 	

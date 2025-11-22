@@ -2,24 +2,27 @@ package ar.edu.unlam.pb2.criaturas;
 
 public class CriaturaAncestral extends Criatura {
 
+	private final int ENERGIA_MAXIMA = 200;
+	private final int ENERGIA_MINIMA = 100;
+
 	public CriaturaAncestral(String nombre, Integer nivelDeEnergia, Afinidad afinidad) {
 		super(nombre, nivelDeEnergia, afinidad);
 		asegurarMinimo();
 	}
 
 	private void asegurarMinimo() {
-		if (this.nivelDeEnergia < 100) {
-			this.nivelDeEnergia = 100;
+		if (this.nivelDeEnergia < ENERGIA_MINIMA) {
+			this.nivelDeEnergia = ENERGIA_MINIMA;
 		}
 	}
 
 	@Override
 	public void entrenar() {
-		int nuevaEnergia = this.nivelDeEnergia + 20;
-		if (nuevaEnergia > 200) {
-			nuevaEnergia = 200;
+		Integer nuevaEnergia = this.nivelDeEnergia + 20;
+		if (nuevaEnergia > ENERGIA_MAXIMA) {
+			nuevaEnergia = ENERGIA_MAXIMA;
 		}
-		//// CAMBIOS A VERIFICAR
+
 		if (nuevaEnergia > 150) {
 			this.volverInestable();
 		}
@@ -32,7 +35,6 @@ public class CriaturaAncestral extends Criatura {
 		asegurarMinimo();
 	}
 
-////CAMBIOS A VERIFICAR	
 	@Override
 	public void pacificar() {
 		if (this.getEstado().equals(Emocional.INESTABLE)) {
@@ -41,9 +43,9 @@ public class CriaturaAncestral extends Criatura {
 		}
 
 	}
-	
+
 	@Override
 	public Boolean esCriaturaAncestral() {
-	    return true;
+		return true;
 	}
 }

@@ -10,18 +10,18 @@ public class InteraccionCriaturas implements Interaccion{
 		 if (c1.getAfinidad().equals(c2.getAfinidad())) {
 	            c1.setNivelDeEnergia(c1.getNivelDeEnergia() + 10);
 	            c2.setNivelDeEnergia(c2.getNivelDeEnergia() + 10);
-	            return;
+	          
 	        }
 		
 		if(AfinidadesOpuestas.sonOpuestas(c1.getAfinidad(), c2.getAfinidad())) {
 			c1.volverInestable();
 			c2.volverInestable();
-			return;
+			
 		}
 
 		if (c1.esCriaturaAncestral() || c2.esCriaturaAncestral()) {
 			interaccionConAncestral(c1, c2);
-			return;
+			
 		}
 
 	}
@@ -43,11 +43,13 @@ public class InteraccionCriaturas implements Interaccion{
 		
 		ancestral.setNivelDeEnergia(ancestral.getNivelDeEnergia() + 20);
 		
-        int energiaNueva = otraCriatura.getNivelDeEnergia() - 15;
-        if (energiaNueva < 0) {
-            energiaNueva = 0;
+		Integer energiaNueva = otraCriatura.getNivelDeEnergia() - 15;
+		if (energiaNueva > 0) {
+			otraCriatura.setNivelDeEnergia(energiaNueva);
+		} else {       
+           energiaNueva = 0;
         }
         
-        otraCriatura.setNivelDeEnergia(energiaNueva);
+        
     }
 }

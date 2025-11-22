@@ -51,8 +51,8 @@ public class InteraccionesTest {
     	InteraccionCriaturas interaccion = new InteraccionCriaturas();
     	interaccion.interactuar(ancestral, otraCriatura);
     	
-    	assertEquals(Integer.valueOf(120), ancestral.getNivelDeEnergia());
-    	assertEquals(Integer.valueOf(25), otraCriatura.getNivelDeEnergia());
+    	assertEquals(Integer.valueOf(130), ancestral.getNivelDeEnergia());
+    	assertEquals(Integer.valueOf(35), otraCriatura.getNivelDeEnergia());
     }
 
 }

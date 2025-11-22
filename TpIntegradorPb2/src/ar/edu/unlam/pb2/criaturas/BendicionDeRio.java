@@ -2,6 +2,9 @@ package ar.edu.unlam.pb2.criaturas;
 
 public class BendicionDeRio extends TransformacionesDecorador {
 
+	private final int ENERGIA_MAXIMA = 180;
+	private final int DUPLICA_ENERGIA = 2;
+
 	public BendicionDeRio(Criatura criatura) {
 		super(criatura);
 
@@ -11,10 +14,10 @@ public class BendicionDeRio extends TransformacionesDecorador {
 	public void entrenar() {
 		this.criatura.entrenar();
 
-		Integer nuevaEnergia = this.criatura.getNivelDeEnergia() * 2;
+		Integer nuevaEnergia = this.criatura.getNivelDeEnergia() * DUPLICA_ENERGIA;
 
-		if (nuevaEnergia > 180) {
-			nuevaEnergia = 180;
+		if (nuevaEnergia > ENERGIA_MAXIMA) {
+			nuevaEnergia = ENERGIA_MAXIMA;
 		}
 
 		this.setNivelDeEnergia(nuevaEnergia);
