@@ -118,12 +118,22 @@ public class CriaturasTest {
 
 	@Test
 	public void queUnaCriaturaDomesticaAdquieraVinculoTerreste() {
+	    Criatura c = new CriaturaDomesticada("Luna", 40, Afinidad.TIERRA);
+	    c = new VinculoTerrestre(c);
 
+	    c.reducirEnergia(100);
+
+	    assertEquals(Integer.valueOf(50), c.getNivelDeEnergia());
 	}
 
 	@Test
 	public void queUnaCriaturaDomesticaAdquieraAscensoDelViento() {
+	    Criatura c = new CriaturaDomesticada("Luna", 40, Afinidad.TIERRA);
+	    c = new AscensoDelViento(c);
 
+	    assertEquals(Afinidad.AIRE, c.getAfinidad());
 	}
 
 }
+
+

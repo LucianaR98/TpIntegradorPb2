@@ -9,19 +9,29 @@ public abstract class TransformacionesDecorador extends Criatura {
 	}
 
 	@Override
-	public void entrenar() {
+    public Integer getNivelDeEnergia() {
+        return criatura.getNivelDeEnergia();
+    }
 
-	}
+    @Override
+    public void setNivelDeEnergia(Integer energia) {
+        criatura.setNivelDeEnergia(energia);
+    }
 
-	@Override
-	public void pacificar() {
+    @Override
+    public Afinidad getAfinidad() {
+        return criatura.getAfinidad();
+    }
 
-	}
+    @Override
+    public Emocional getEstado() {
+        return criatura.getEstado();
+    }
 
-	@Override
-	public void reducirEnergia(int cantidad) {
-
-	}
+    @Override
+    public void volverInestable() {
+        criatura.volverInestable();
+    }
 
     public Criatura getCriaturaBase() {
         return criatura;
