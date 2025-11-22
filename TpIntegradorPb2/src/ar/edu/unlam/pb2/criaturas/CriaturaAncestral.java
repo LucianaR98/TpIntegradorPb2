@@ -41,4 +41,9 @@ public class CriaturaAncestral extends Criatura {
 		}
 
 	}
+	
+	@Override
+	public Boolean esCriaturaAncestral() {
+		return true;
+	}
 }

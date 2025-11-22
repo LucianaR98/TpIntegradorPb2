@@ -57,4 +57,9 @@ public abstract class Criatura {
 	 }
 
 		public abstract void reducirEnergia(int cantidad);
+
+
+		public Boolean esCriaturaAncestral() {
+			return false;
+		}
 }

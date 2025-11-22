@@ -1,18 +1,53 @@
 package ar.edu.unlam.pb2.interacciones;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+import ar.edu.unlam.pb2.criaturas.*;
 
 public class InteraccionesTest {
 
-    @Test
+	@Test
     public void queInteractuenCriaturasConMismaAfinidad() {
+	   
+	   
     }
 
     @Test
-    public void queInteractuenCriaturasConAfinidadesOpuestas() {
+    public void queInteractuenCriaturasConAfinidadesOpuestasEnTierraYAire() {
+    	Criatura criaturaTierra = new CriaturaSalvaje("Tango", 100, Afinidad.TIERRA);
+    	Criatura criaturaAire = new CriaturaSalvaje("Appa", 40, Afinidad.AIRE);
+    	
+    	InteraccionCriaturas interaccion = new InteraccionCriaturas();
+    	interaccion.interactuar(criaturaTierra, criaturaAire);
+
+    	assertEquals(Emocional.INESTABLE, criaturaTierra.getEstado());
+    	assertEquals(Emocional.INESTABLE, criaturaAire.getEstado());
+    }
+    
+    @Test
+    public void queInteractuenCriaturasConAfinidadesOpuestasEnFuegoYAgua() {
+    	Criatura criaturaFuego = new CriaturaSalvaje("Samy", 50, Afinidad.FUEGO);
+    	Criatura criaturaAgua = new CriaturaSalvaje("Fish", 30, Afinidad.AGUA);
+    	
+    	InteraccionCriaturas interaccion = new InteraccionCriaturas();
+    	interaccion.interactuar(criaturaFuego, criaturaAgua);
+    	
+    	assertEquals(Emocional.INESTABLE, criaturaFuego.getEstado());
+    	assertEquals(Emocional.INESTABLE, criaturaAgua.getEstado());
     }
 
     @Test
-    public void queUnAncestralDomineLaInteraccion() {
+    public void queUnAncestralDomineLaInteraccionGanandoEnergiaYLaOtraCriaturaPierdeEnergia() {
+    	Criatura ancestral = new CriaturaAncestral("Samy", 100, Afinidad.AGUA);
+    	Criatura otraCriatura = new CriaturaDomesticada("Rocket", 40, Afinidad.AGUA);
+    	
+    	InteraccionCriaturas interaccion = new InteraccionCriaturas();
+    	interaccion.interactuar(ancestral, otraCriatura);
+    	
+    	assertEquals(Integer.valueOf(120), ancestral.getNivelDeEnergia());
+    	assertEquals(Integer.valueOf(25), otraCriatura.getNivelDeEnergia());
     }
+
 }
+
