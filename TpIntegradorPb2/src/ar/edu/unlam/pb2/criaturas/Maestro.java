@@ -1,7 +1,5 @@
 package ar.edu.unlam.pb2.criaturas;
 import java.util.Map;
-
-
 import java.util.HashMap;
 
 public class Maestro {
@@ -69,5 +67,9 @@ public class Maestro {
 
 		this.criaturas.put(criatura.getNombre(), criaturaTransformada);
 		return criaturaTransformada;
+	}
+
+	public Map<String, Criatura> getCriaturas() {
+	    return this.criaturas;
 	}
 }
