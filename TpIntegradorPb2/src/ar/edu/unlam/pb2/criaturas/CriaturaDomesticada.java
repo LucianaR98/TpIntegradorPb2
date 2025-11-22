@@ -12,7 +12,7 @@ public class CriaturaDomesticada extends Criatura {
 		if (nuevaEnergia > 200) {
 			nuevaEnergia = 200;
 		}
-		this.nivelDeEnergia = nuevaEnergia;
+		this.setNivelDeEnergia(nuevaEnergia);
 	}
 
 	public void volverInestable() {

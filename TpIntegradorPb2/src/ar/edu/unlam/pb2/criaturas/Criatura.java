@@ -19,6 +19,11 @@ public abstract class Criatura {
 	public String getNombre() {
 		return nombre;
 	}
+	
+	public void setNivelDeEnergia(Integer nivelDeEnergia) {
+		this.nivelDeEnergia = nivelDeEnergia;
+		this.ajustarEnergiaEntre0y200();
+	}
 
 	public Integer getNivelDeEnergia() {
 		return nivelDeEnergia;

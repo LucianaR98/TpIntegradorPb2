@@ -1,8 +1,9 @@
 package ar.edu.unlam.pb2.criaturas;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*; 
 
 import org.junit.Test;
+
 
 public class MaestroTest {
 
@@ -64,8 +65,15 @@ public class MaestroTest {
 	}
 
 	@Test
-	public void quePuedaTransformarUnaCriaturaConRitualesEspeciales() {
-
+	public void quePuedaTransformarUnaCriaturaConRitualesEspeciales() throws FaltaDeMaestriaException {
+		Maestro maestro = new Maestro("Moon", 40, Afinidad.TIERRA);
+		Criatura criatura = new CriaturaAncestral("Tango", 100, Afinidad.FUEGO);
+		
+		maestro.agregarCriatura(criatura);
+		criatura = maestro.utilizarBendicionDeRio(criatura);
+		criatura = maestro.utilizarLlamaInterna(criatura);
+		maestro.entrenarCriatura(criatura);
+		assertEquals(Integer.valueOf(200), criatura.getNivelDeEnergia());
 	}
 
 }

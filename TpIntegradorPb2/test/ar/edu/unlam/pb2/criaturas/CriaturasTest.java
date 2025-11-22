@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb2.criaturas;
 
-import static org.junit.Assert.*; 
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -61,7 +61,7 @@ public class CriaturasTest {
 		Criatura c = new CriaturaSalvaje("Lobo", 50, Afinidad.FUEGO);
 		assertEquals(Emocional.TRANQUILA, c.getEstado());
 	}
-	
+
 ////CAMBIOS A VERIFICAR
 	@Test
 	public void queUnaCriaturaSalvajeSeVuelvaInestableConEnergiaMayorA100() {
@@ -69,22 +69,61 @@ public class CriaturasTest {
 		c.entrenar();
 		assertEquals(Emocional.INESTABLE, c.getEstado());
 	}
-	
+
 	@Test
 	public void queUnaCriaturaAncestralSeVuelvaInestableConEnergiaMayorA150() {
 		Criatura c = new CriaturaAncestral("Samy", 150, Afinidad.FUEGO);
 		c.entrenar();
 		assertEquals(Emocional.INESTABLE, c.getEstado());
 	}
-	
+
 	@Test
 	public void queUnaCriaturaDomesticadaNoPuedaVolverseInestable() {
 		Criatura c = new CriaturaDomesticada("Samy", 150, Afinidad.FUEGO);
-		c.entrenar();	//Hice varios para demostrar que da igual cuánto entrene nunca se vuelve inestable.
+		c.entrenar(); // Hice varios para demostrar que da igual cuánto entrene nunca se vuelve
+						// inestable.
 		c.entrenar();
 		c.entrenar();
 		c.entrenar();
 		c.entrenar();
 		assertEquals(Emocional.TRANQUILA, c.getEstado());
 	}
+
+	// Test transformaciones elementales
+	@Test
+	public void queUnaCriaturaAncestralAdquieraUnaBendicionDeRioDuplicandoSuEnergia() {
+		Criatura criatura = new CriaturaAncestral("Samy", 101, Afinidad.AGUA);
+		criatura = new BendicionDeRio(criatura);
+		criatura.entrenar();
+		assertEquals(Integer.valueOf(180), criatura.getNivelDeEnergia());
+	}
+
+	@Test
+	public void queUnaCriaturaAncestralAdquieraDosTransformacionesDuplicandoSuEnergia() {
+		Criatura criatura = new CriaturaAncestral("Rocket", 101, Afinidad.FUEGO);
+		criatura = new BendicionDeRio(criatura);
+		criatura = new LlamaInterna(criatura);
+		criatura.entrenar();
+		assertEquals(Integer.valueOf(200), criatura.getNivelDeEnergia());
+	}
+
+	@Test
+	public void queUnaCriaturaAncestralQueNoEsFuegoSeVuelvaInestableConLlamaInterna() {
+		Criatura criatura = new CriaturaAncestral("Samy", 101, Afinidad.AGUA);
+		criatura = new BendicionDeRio(criatura);
+		criatura = new LlamaInterna(criatura);
+		criatura.entrenar();
+		assertEquals(Emocional.INESTABLE, criatura.getEstado());
+	}
+
+	@Test
+	public void queUnaCriaturaDomesticaAdquieraVinculoTerreste() {
+
+	}
+
+	@Test
+	public void queUnaCriaturaDomesticaAdquieraAscensoDelViento() {
+
+	}
+
 }

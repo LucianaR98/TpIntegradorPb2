@@ -1,5 +1,7 @@
 package ar.edu.unlam.pb2.criaturas;
 import java.util.Map;
+
+
 import java.util.HashMap;
 
 public class Maestro {
@@ -34,7 +36,10 @@ public class Maestro {
 		
 	}
 
-	public Boolean maestriaValida(Criatura criatura) {
+	public Boolean maestriaValida(Criatura criatura) {	
+		  while (criatura instanceof TransformacionesDecorador) {
+		        criatura = ((TransformacionesDecorador) criatura).getCriaturaBase();
+		    }
 		Integer nivel = this.nivelMaestria;		
 		if(criatura instanceof CriaturaDomesticada) {
 			return nivel >= 1;
@@ -51,10 +56,20 @@ public class Maestro {
 			criatura.pacificar();
 		}
 	}
-	
-	
-	
 
-	
+	public Criatura utilizarBendicionDeRio(Criatura criatura) {
+		Criatura criaturaTransformada = new BendicionDeRio(criatura);
 
+		this.criaturas.put(criatura.getNombre(), criaturaTransformada);
+		return criaturaTransformada;
+	}
+
+	public Criatura utilizarLlamaInterna(Criatura criatura) {
+		Criatura criaturaTransformada = new LlamaInterna(criatura);
+
+		this.criaturas.put(criatura.getNombre(), criaturaTransformada);
+		return criaturaTransformada;
+	}
+	
+	
 }

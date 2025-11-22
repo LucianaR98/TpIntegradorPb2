@@ -24,7 +24,7 @@ public class CriaturaSalvaje extends Criatura {
 			this.volverInestable();
 		}
 
-		this.nivelDeEnergia = nuevaEnergia;
+		this.setNivelDeEnergia(nuevaEnergia);
 	}
 	
 ////CAMBIOS A VERIFICAR

@@ -23,7 +23,7 @@ public class CriaturaAncestral extends Criatura {
 		if (nuevaEnergia > 150) {
 			this.volverInestable();
 		}
-		this.nivelDeEnergia = nuevaEnergia;
+		this.setNivelDeEnergia(nuevaEnergia);
 		asegurarMinimo();
 	}
 
