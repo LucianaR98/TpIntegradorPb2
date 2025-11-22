@@ -70,6 +70,4 @@ public class Maestro {
 		this.criaturas.put(criatura.getNombre(), criaturaTransformada);
 		return criaturaTransformada;
 	}
-	
-	
 }

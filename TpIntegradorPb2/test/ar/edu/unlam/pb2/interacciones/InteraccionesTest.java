@@ -9,8 +9,14 @@ public class InteraccionesTest {
 
 	@Test
     public void queInteractuenCriaturasConMismaAfinidad() {
-	   
-	   
+	    Criatura c1 = new CriaturaDomesticada("Luna", 50, Afinidad.FUEGO);
+	    Criatura c2 = new CriaturaSalvaje("Zorro", 80, Afinidad.FUEGO);
+
+	    InteraccionCriaturas interaccion = new InteraccionCriaturas();
+	    interaccion.interactuar(c1, c2);
+
+	    assertEquals(Integer.valueOf(60), c1.getNivelDeEnergia());
+	    assertEquals(Integer.valueOf(90), c2.getNivelDeEnergia());
     }
 
     @Test
