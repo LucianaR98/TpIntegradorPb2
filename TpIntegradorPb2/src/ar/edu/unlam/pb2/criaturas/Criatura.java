@@ -48,7 +48,6 @@ public abstract class Criatura {
 		}
 	}
 	
-	//CAMBIOS A VERIFICAR
 		public abstract void entrenar();
 		
 		public abstract void pacificar();
